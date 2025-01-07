@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Race extends Model
+class GroupeCanine extends Model
 {
     //
     protected $fillable = [
         "name",
-        "other_name",
-        "description"
+        "caracteristique"
     ];
 }

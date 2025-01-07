@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Race extends Model
+class ParentDog extends Model
 {
     //
     protected $fillable = [
-        "name",
-        "other_name",
-        "description"
+        "dog_male_id",
+        "dog_female_id"
     ];
 }

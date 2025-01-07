@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Race extends Model
+class TypeCompte extends Model
 {
     //
     protected $fillable = [
         "name",
-        "other_name",
-        "description"
+        "level_access",
+        "is_active"
     ];
 }
