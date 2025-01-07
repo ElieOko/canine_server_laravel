@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
+            //lLivre des Origines Congolaise 
+            $table->string("loc")->nullable();
+            $table->string("name");
+            $table->string("nickname")->nullable();
+            $table->string("caracteristique")->nullable();
+            $table->string("date_naissance")->nullable();
+            $table->foreignId('owner_dog_id')->nullable()->index();
+            $table->foreignId('parent_id')->nullable()->index();
+            $table->foreignId('dog_type_id')->nullable()->index();
             $table->timestamps();
         });
     }

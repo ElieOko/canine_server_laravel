@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('personnels', function (Blueprint $table) {
             $table->id();
+            $table->string('nom_famille');
+            $table->string('prenom');
+            $table->string('genre')->nullable();
+            $table->date('date_naissance')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('adresse')->nullable();
+            $table->string('image_profil')->nullable();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->boolean("is_active")->default(true);
             $table->timestamps();
         });
     }

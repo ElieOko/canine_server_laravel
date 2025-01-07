@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('group_races', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('race_id')->nullable()->index();
+            $table->foreignId('groupe_canine_id')->nullable()->index();
             $table->timestamps();
         });
     }

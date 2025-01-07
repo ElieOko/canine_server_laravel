@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->string("other_name")->nullable();
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }

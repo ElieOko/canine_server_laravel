@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('veterinaires', function (Blueprint $table) {
             $table->id();
+            $table->string('matricule')->nullable();
+            $table->foreignId('personnel_id')->nullable()->index();
+            $table->boolean("is_active")->default(true);
             $table->timestamps();
         });
     }
