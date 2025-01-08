@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\GroupeCanine;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,396 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        DB::table('titles')->insert([
+            [
+                "name" =>"Monsieur",
+                "code" =>"Mr",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"Madame",
+                "code" =>"Mdm",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ]
+        ]);
+        DB::table('races')->insert([
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+
+
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"",
+                "other_name" =>"",
+                "description" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ]
+
+        ]);
+        DB::table('type_comptes')->insert([
+            [
+                "name" =>"User",
+                "level_access" =>1,
+                "is_active" => true,
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"Veterinaire",
+                "level_access" =>0,
+                "is_active" => true,
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "name" =>"Eleveur",
+                "level_access" =>0,
+                "is_active" => true,
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ]
+        ]);
         DB::table('groupe_canines')->insert([
             [
                'name' => 'Groupe 1' ,
