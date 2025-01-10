@@ -16,7 +16,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // User::factory(10)->create();professions
+        DB::table('professions')->insert([
+            [
+                "nom" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ]
+        ]);
         DB::table('titles')->insert([
             [
                 "name" =>"Monsieur",
