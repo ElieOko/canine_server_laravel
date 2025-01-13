@@ -4,11 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\ProfessionController;
 
 
 Route::post('user/register', [UserController::class, 'register']);
 Route::post('user/login', [UserController::class, 'login']);
-
+Route::resource('profession', ProfessionController::class)->only(['index']);
 Route::middleware(['auth:sanctum'])->group(function () { 
     
     Route::resource('personnel', PersonnelController::class)->only(['index', 'store']);

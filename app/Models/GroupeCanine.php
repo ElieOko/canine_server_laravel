@@ -9,6 +9,6 @@ class GroupeCanine extends Model
     //
     protected $fillable = [
         "name",
-        "caracteristique"
+        "description"
     ];
 }
