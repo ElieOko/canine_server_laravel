@@ -59,51 +59,57 @@ class UserController extends Controller
              ],403);
         }
         $field = $validator->validated();
-        $user_generate =strtolower($request->username??($request->nom??"muzola").($request->prenom??"ethys"));
-        $user = User::updateOrCreate([
-            'username'    =>   $user_generate.$this->canine_ext,
-            'password'    =>   Hash::make($field['password']),
-            'email'       =>   $field['email']??"",
-            'user_type_id'=>   $field['user_type_id']
-        ]);
-
-        $token = $user->createToken('token')->plainTextToken;
+        $user_generate =strtolower($request->username??($request->nom??"muzola").($request->prenom??"ethys")).$this->canine_ext;
+        $state = User::where('username',$user_generate)->first() ;
+        if(!$state){
+            $user = User::updateOrCreate([
+                'username'    =>   $user_generate,
+                'password'    =>   Hash::make($field['password']),
+                'email'       =>   $field['email']??"",
+                'user_type_id'=>   $field['user_type_id']
+            ]);
+            $token = $user->createToken('token')->plainTextToken;
         //
-        if($field['user_type_id'] == 2){
-            $request->merge(['user_id' => $user->id]);
-            $data = (new PersonnelController())->store($request);
-            if($data['error'] != ""){
-                User::destroy($user->id);
-                return response()->json([
-                    "message"=> $data['error']
-                ],422);
-            } 
-            $account =  "Compte Bailleur";
-        }
-            //user_system
-        else{
-            if($field['user_type_id'] != 1){
-                User::destroy($user->id);
-                return response()->json([
-                    'message' => $this->msg_account_invalid
-                ],200);
+            if($field['user_type_id'] == 2){
+                $request->merge(['user_id' => $user->id]);
+                $data = (new PersonnelController())->store($request);
+                if($data['error'] != ""){
+                    User::destroy($user->id);
+                    return response()->json([
+                        "message"=> $data['error']
+                    ],422);
+                } 
+                $account =  "Compte Bailleur";
             }
+                //user_system
             else{
-                return response()->json([
-                    'user' => $user,
-                    'token'=> $token,
-                    'account' => $account
-                ],200);
-            }  
+                if($field['user_type_id'] != 1){
+                    User::destroy($user->id);
+                    return response()->json([
+                        'message' => $this->msg_account_invalid
+                    ],200);
+                }
+                else{
+                    return response()->json([
+                        'user' => $user,
+                        'token'=> $token,
+                        'account' => $account
+                    ],200);
+                }  
+            }
+            return response()->json([
+                'message' =>'Votre compte a été créer avec succès',
+                'data' => $data['sys'],
+                'user' => $user,
+                'token'=> $token,
+                'account' => $account
+            ],200);
         }
-
-        return response()->json([
-            'message' =>'Votre compte a été créer avec succès',
-            'data' => $data['sys'],
-            'user' => $user,
-            'token'=> $token,
-            'account' => $account
-        ],200);
+        else{
+            return response()->json([
+                'message' =>'Il semblerait que ce nom d\'utilisateur sois déjà enregistré',
+            ],400);
+        }
     }
 
 
