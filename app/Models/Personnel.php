@@ -8,6 +8,7 @@ class Personnel extends Model
 {
     //
     protected $fillable = [
+        'matricule',
         'nom',
         'prenom',
         'postnom',

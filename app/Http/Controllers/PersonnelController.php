@@ -38,7 +38,7 @@ class PersonnelController extends Controller
             'genre' => 'required|string',
             'telephone' => 'string',
             'adresse' => 'string',
-            'profession_id' => 'string',
+            'profession_id' => 'int',
             'image_profil' =>'string',
             'date_naissance' => 'date',
             'user_id' => 'int',
@@ -46,15 +46,17 @@ class PersonnelController extends Controller
 
         if(!$validator->stopOnFirstFailure()->fails()) {
             $validated = $validator->validated();
+            $matricule =$this->matricule_ext . count(Personnel::all()) + 1;
             $personnel = Personnel::updateOrCreate([
+            'matricule' => $matricule,
             'nom' => $validated['nom'],
             'postnom' => $validated['nom'],
             'prenom' => $validated['prenom'],
-            'adresse' => $validated['adresse'],
+            'adresse' => $validated['adresse']??"",
             'profession_id' => $validated['profession_id'],
             'genre' => $validated['genre'],
-            'telephone' => $validated['telephone'],
-            'date_naissance' => $validated['date_naissance'],
+            'telephone' => $validated['telephone']??"",
+            'date_naissance' => $validated['date_naissance']??"",
             'user_id' => $validated['user_id'],
             'is_active' => true
             ]);

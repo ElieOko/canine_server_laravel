@@ -49,7 +49,6 @@ class UserController extends Controller
         $data["sys"] ="User System";
         $account = "User Sytem";
         $validator = Validator::make($request->all(),[
-            'username' =>'required|unique:users',
             'password' => 'required|min:8',
             'email'=>'string',
             'user_type_id'=>'required|int'
@@ -60,9 +59,9 @@ class UserController extends Controller
              ],403);
         }
         $field = $validator->validated();
-        $user_generate = $request->nom??$field['username'].$request->prenom??""."@canine-drc";
+        $user_generate =strtolower($request->username??($request->nom??"muzola").($request->prenom??"ethys"));
         $user = User::updateOrCreate([
-            'username'    =>   $user_generate,
+            'username'    =>   $user_generate.$this->canine_ext,
             'password'    =>   Hash::make($field['password']),
             'email'       =>   $field['email']??"",
             'user_type_id'=>   $field['user_type_id']
