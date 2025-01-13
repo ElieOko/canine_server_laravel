@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Personnel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\PersonnelCollection;
 
 class PersonnelController extends Controller
 {
@@ -13,7 +14,13 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        //
+        $data = Personnel::all();
+        if($data->count() != 0 ){
+            return new PersonnelCollection($data);
+        }
+        return response()->json([
+            "message"=>"Ressource not found",
+        ],400);
     }
 
     /**
