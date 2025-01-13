@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personnel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PersonnelController extends Controller
 {
@@ -28,7 +29,40 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data['error'] = null ;
+        $data['sys']   = "" ;
+        $validator = Validator::make($request->all(),[
+            'nom' => 'required|string',
+            'postnom' => 'required|string',
+            'prenom' => 'required|string',
+            'genre' => 'required|string',
+            'telephone' => 'string',
+            'adresse' => 'string',
+            'profession_id' => 'string',
+            'image_profil' =>'string',
+            'date_naissance' => 'date',
+            'user_id' => 'int',
+        ]);
+
+        if(!$validator->stopOnFirstFailure()->fails()) {
+            $validated = $validator->validated();
+            $personnel = Personnel::updateOrCreate([
+            'nom' => $validated['nom'],
+            'postnom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'adresse' => $validated['adresse'],
+            'profession_id' => $validated['profession_id'],
+            'genre' => $validated['genre'],
+            'telephone' => $validated['telephone'],
+            'date_naissance' => $validated['date_naissance'],
+            'user_id' => $validated['user_id'],
+            'is_active' => true
+            ]);
+            $data['sys'] = $personnel;
+            return $data;
+        }
+        $data['error']= $validator->errors()??"";
+        return $data;
     }
 
     /**

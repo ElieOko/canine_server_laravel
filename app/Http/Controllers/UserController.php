@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UserCollection;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -12,13 +13,16 @@ class UserController extends Controller
     //
     public function login(Request $request) {
 
+        return response()->json([
+            'message' => $request->re
+         ],200);
         $validator = Validator::make($request->all(),[
-            'username' =>'required|string',
-            'password' => 'required|string'
+            "username" =>'required|string',
+            "password" =>'required|string'
         ]);
         if($validator->stopOnFirstFailure()->fails()){
             return response()->json([
-                'message' => $validator->error()
+                'message' => $validator->errors()
              ],402);
         }
         $field = $validator->validated();
@@ -41,5 +45,80 @@ class UserController extends Controller
                'user' => $user
             ],200);
         }
+    }
+
+    public function register(Request $request) {
+        $data["sys"] ="User System";
+        $account = "User Sytem";
+        $validator = Validator::make($request->all(),[
+            'username' =>'required|unique:users',
+            'password' => 'required|min:8',
+            'email'=>'string',
+            'user_type_id'=>'required|int'
+        ]);
+        if($validator->stopOnFirstFailure()->fails()){
+            return response()->json([
+                'message' => $validator->errors(),
+             ],403);
+        }
+        $field = $validator->validated();
+        $user_generate = $request->nom??$field['username'].$request->prenom??""."@canine-drc";
+        $user = User::updateOrCreate([
+            'username'    =>   $user_generate,
+            'password'    =>   Hash::make($field['password']),
+            'email'       =>   $field['email']??"",
+            'user_type_id'=>   $field['user_type_id']
+        ]);
+
+        $token = $user->createToken('token')->plainTextToken;
+        //
+        if($field['user_type_id'] == 2){
+            $request->merge(['user_id' => $user->id]);
+            $data = (new PersonnelController())->store($request);
+            if($data['error'] != ""){
+                User::destroy($user->id);
+                return response()->json([
+                    "message"=> $data['error']
+                ],422);
+            } 
+            $account =  "Compte Bailleur";
+        }
+            //user_system
+        else{
+            if($field['user_type_id'] != 1){
+                User::destroy($user->id);
+                return response()->json([
+                    'message' => $this->msg_account_invalid
+                ],200);
+            }
+            else{
+                return response()->json([
+                    'user' => $user,
+                    'token'=> $token,
+                    'account' => $account
+                ],200);
+            }  
+        }
+
+        return response()->json([
+            'message' =>'Votre compte a été créer avec succès',
+            'data' => $data['sys'],
+            'user' => $user,
+            'token'=> $token,
+            'account' => $account
+        ],200);
+    }
+
+
+
+    
+    public function index(){
+        $data = User::all();
+        if($data->count() != 0 ){
+            return new UserCollection($data);
+        }
+        return response()->json([
+            "message"=>"Ressource not found",
+        ],400);
     }
 }

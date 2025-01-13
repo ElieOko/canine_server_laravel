@@ -413,21 +413,14 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('type_comptes')->insert([
             [
-                "name" =>"User",
+                "name" =>"User System",
                 "level_access" =>1,
                 "is_active" => true,
                 'created_at' => (Carbon::now())->toDateTimeString(),
                 'updated_at' => (Carbon::now())->toDateTimeString()
             ],
             [
-                "name" =>"Veterinaire",
-                "level_access" =>0,
-                "is_active" => true,
-                'created_at' => (Carbon::now())->toDateTimeString(),
-                'updated_at' => (Carbon::now())->toDateTimeString()
-            ],
-            [
-                "name" =>"Eleveur",
+                "name" =>"Personnel System",
                 "level_access" =>0,
                 "is_active" => true,
                 'created_at' => (Carbon::now())->toDateTimeString(),

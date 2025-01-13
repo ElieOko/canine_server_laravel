@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Profession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ProfessionCollection;
 
 class ProfessionController extends Controller
 {
@@ -12,7 +14,13 @@ class ProfessionController extends Controller
      */
     public function index()
     {
-        //
+        $data = Profession::all();
+        if($data->count() != 0 ){
+            return new ProfessionCollection($data);
+        }
+        return response()->json([
+            "message"=>"Ressource not found",
+        ],400);
     }
 
     /**
@@ -28,7 +36,6 @@ class ProfessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
