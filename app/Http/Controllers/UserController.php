@@ -87,13 +87,14 @@ class UserController extends Controller
                     User::destroy($user->id);
                     return response()->json([
                         'message' => $this->msg_account_invalid
-                    ],200);
+                    ],400);
                 }
                 else{
                     return response()->json([
                         'user' => $user,
                         'token'=> $token,
-                        'account' => $account
+                        'account' => $account,
+                        'status' => 200
                     ],200);
                 }  
             }
@@ -102,13 +103,14 @@ class UserController extends Controller
                 'data' => $data['sys'],
                 'user' => $user,
                 'token'=> $token,
-                'account' => $account
+                'account' => $account,
+                'status' => 200
             ],200);
         }
         else{
             return response()->json([
                 'message' =>'Il semblerait que ce nom d\'utilisateur sois déjà enregistré',
-            ],400);
+            ],403);
         }
     }
 
@@ -122,6 +124,7 @@ class UserController extends Controller
         }
         return response()->json([
             "message"=>"Ressource not found",
-        ],400);
+            'status' => 404
+        ],404);
     }
 }
