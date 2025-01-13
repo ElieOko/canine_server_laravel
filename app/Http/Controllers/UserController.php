@@ -13,9 +13,7 @@ class UserController extends Controller
     //
     public function login(Request $request) {
 
-        return response()->json([
-            'message' => $request->re
-         ],200);
+
         $validator = Validator::make($request->all(),[
             "username" =>'required|string',
             "password" =>'required|string'
