@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Personnel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserCollection;
@@ -12,8 +13,7 @@ class UserController extends Controller
 {
     //
     public function login(Request $request) {
-
-
+        $personnel = "" ;
         $validator = Validator::make($request->all(),[
             "username" =>'required|string',
             "password" =>'required|string'
@@ -36,11 +36,13 @@ class UserController extends Controller
             ],404);
         }
         else{
+            $personnel = Personnel::where('user_id', $user->id)->first();
             $token = $user->createToken('token')->plainTextToken;
             return response()->json([
                'message' => 'login success',
                'token' => $token,
-               'user' => $user
+               'user' => $user,
+               'personnel' => $personnel
             ],200);
         }
     }
@@ -79,7 +81,7 @@ class UserController extends Controller
                         "message"=> $data['error']
                     ],422);
                 } 
-                $account =  "Compte Bailleur";
+                $account =  "Compte Personnel";
             }
                 //user_system
             else{
