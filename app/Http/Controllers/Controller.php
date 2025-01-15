@@ -11,6 +11,6 @@ abstract class Controller
     public $msg_email_found_error = "Cette adresse mail appartient a un membre de la communauté";
     public $status_ok = 200;
     public $status_error = 404;
-    public $canine_ext = "@canine-drc";
+    public $canine_ext = "@acyco";
     public $matricule_ext = "000";
 }
