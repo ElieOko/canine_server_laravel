@@ -27,6 +27,21 @@ class DatabaseSeeder extends Seeder
                 "nom" => "Eleveur",
                 'created_at' => (Carbon::now())->toDateTimeString(),
                 'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "Dresseur",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "Educateur",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
+            ],
+            [
+                "nom" => "Toiletteur",
+                'created_at' => (Carbon::now())->toDateTimeString(),
+                'updated_at' => (Carbon::now())->toDateTimeString()
             ]
             // [
             //     "nom" => "",
