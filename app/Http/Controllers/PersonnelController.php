@@ -74,6 +74,13 @@ class PersonnelController extends Controller
         return $data;
     }
 
+    public function filter(Request $request){
+        $data = Personnel::query()->when(
+            request('matricule'), function ($q) {
+            return $q->where('matricule', request('matricule'));
+        })->with('user')->get();
+        return response($data,201);
+    }
     /**
      * Display the specified resource.
      */
