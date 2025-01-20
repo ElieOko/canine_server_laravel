@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Personnel extends Model
@@ -21,5 +22,8 @@ class Personnel extends Model
         'is_active',
         'user_id'
     ];
-
+    public function branch()
+    {
+        return $this->belongsTo(User::class, 'user_id' , 'id');
+    }
 }
