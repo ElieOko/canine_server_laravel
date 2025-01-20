@@ -115,10 +115,7 @@ class UserController extends Controller
             ],403);
         }
     }
-
-
-
-    
+        
     public function index(){
         $data = User::all();
         if($data->count() != 0 ){
