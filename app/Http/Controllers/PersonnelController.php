@@ -14,7 +14,7 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        $data = Personnel::all();
+        $data = Personnel::with("user")->get();
         if($data->count() != 0 ){
             return new PersonnelCollection($data);
         }
