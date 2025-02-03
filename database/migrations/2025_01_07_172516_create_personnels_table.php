@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('genre')->nullable();
             $table->date('date_naissance')->nullable();
+            $table->string('structure')->nullable();
+            $table->string('specialite')->nullable();
             $table->string('telephone')->nullable();
             $table->string('adresse')->nullable();
             $table->string('image_profil')->nullable();

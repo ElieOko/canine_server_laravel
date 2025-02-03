@@ -15,6 +15,8 @@ class Personnel extends Model
         'postnom',
         'genre',
         'telephone',
+        'specialite',
+        'structure',
         'date_naissance',
         'image_profil',
         'profession_id',

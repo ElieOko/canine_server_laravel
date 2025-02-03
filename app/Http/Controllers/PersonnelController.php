@@ -39,16 +39,18 @@ class PersonnelController extends Controller
         $data['error'] = null ;
         $data['sys']   = "" ;
         $validator = Validator::make($request->all(),[
-            'nom' => 'required|string',
-            'postnom' => 'required|string',
-            'prenom' => 'required|string',
-            'genre' => 'required|string',
-            'telephone' => 'string',
-            'adresse' => 'string',
-            'profession_id' => 'int',
-            'image_profil' =>'string',
-            'date_naissance' => 'date',
-            'user_id' => 'int',
+            'nom'               => 'required|string',
+            'postnom'           => 'required|string',
+            'prenom'            => 'required|string',
+            'specialite'        => 'string',
+            'structure'         => 'string',
+            'genre'             => 'required|string',
+            'telephone'         => 'string',
+            'adresse'           => 'string',
+            'profession_id'     => 'int',
+            'image_profil'      => 'string',
+            'date_naissance'    => 'date',
+            'user_id'           => 'int',
         ]);
 
         if(!$validator->stopOnFirstFailure()->fails()) {
@@ -59,6 +61,8 @@ class PersonnelController extends Controller
             'nom' => $validated['nom'],
             'postnom' => $validated['nom'],
             'prenom' => $validated['prenom'],
+            'structure' => $validated['structure']??"",
+            'specialite' => $validated['specialite']??"",
             'adresse' => $validated['adresse']??"",
             'profession_id' => $validated['profession_id'],
             'genre' => $validated['genre'],
