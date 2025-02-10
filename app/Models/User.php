@@ -25,7 +25,9 @@ class User extends Authenticatable
         'email',
         'password',
         'user_type_id',
-        'image_profil'
+        'image_profil',
+        'specialite',
+        'structure',
     ];
 
     /**
@@ -37,7 +39,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    
+
     public function personnel(): HasMany
     {
         return $this->hasMany(Personnel::class);

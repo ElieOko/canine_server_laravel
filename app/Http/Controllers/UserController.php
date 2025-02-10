@@ -56,6 +56,8 @@ class UserController extends Controller
             'email'=>'string',
             'user_type_id'=>'required|int',
             'image' => 'required|string',
+            'specialite'=>'required|string',
+            'structure'=>'required|string',
         ]);
 
         if($validator->stopOnFirstFailure()->fails()){
@@ -110,12 +112,14 @@ class UserController extends Controller
                 'username'    =>   $user_generate,
                 'password'    =>   Hash::make($field['password']),
                 'email'       =>   $field['email']??"",
-                'user_type_id'=>   $field['user_type_id']
+                'user_type_id'=>   $field['user_type_id'],
+                'specialite'=> $field['specialite'],
+                'structure'=> $field['structure'],
             ]);
             $token = $user->createToken('token')->plainTextToken;
         //
             if($field['user_type_id'] == 2){
-                $request->merge(['user_id' => $user->id,'image_profil' => $url]);
+                $request->merge(['user_id' => $user->id,'image_profil' => $url,$user->specialite,$user->structure]);
                 $data = (new PersonnelController())->store($request);
                 if($data['error'] != ""){
                     User::destroy($user->id);
@@ -125,7 +129,6 @@ class UserController extends Controller
                 }
                 $account =  "Compte Personnel";
             }
-
                 //user_system
             else{
                 if($field['user_type_id'] != 1){
