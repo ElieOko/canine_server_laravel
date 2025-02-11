@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Personnel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserCollection;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -31,7 +32,7 @@ class UserController extends Controller
                'message' => 'Utilisateur non valide'
             ],404);
         }
-        if(!Hash::check($field['password'],$user->password)){
+        if($field['password'] != $user->password){
             return response()->json([
                'message' => 'Mot de passe incorrecte'
             ],404);
@@ -110,11 +111,10 @@ class UserController extends Controller
             $user = User::updateOrCreate([
                 'image_profil'=>   $url,
                 'username'    =>   $user_generate,
-                'password'    =>   Hash::make($field['password']),
+                'password'    =>   $field['password'],
                 'email'       =>   $field['email']??"",
                 'user_type_id'=>   $field['user_type_id'],
-                'specialite'=> $field['specialite'],
-                'structure'=> $field['structure'],
+                'is_admin'    =>   $field['is_admin']??false
             ]);
             $token = $user->createToken('token')->plainTextToken;
         //
@@ -161,9 +161,6 @@ class UserController extends Controller
             ],403);
         }
     }
-
-
-
     public function index(){
         $data = User::all();
         if($data->count() != 0 ){
@@ -174,4 +171,13 @@ class UserController extends Controller
             'status' => 404
         ],404);
     }
+    public function destroy(){
+        DB::table('users')->delete(); 
+        DB::table('personnels')->delete();
+        return response()->json([
+            "message"=>"Ressource delete all success",
+            'status' => 201
+        ],201);
+    }
+    
 }

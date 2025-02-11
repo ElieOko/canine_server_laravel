@@ -57,20 +57,20 @@ class PersonnelController extends Controller
             $validated = $validator->validated();
             $matricule =$this->matricule_ext . count(Personnel::all()) + 1;
             $personnel = Personnel::updateOrCreate([
-            'matricule' => $matricule,
-            'nom' => $validated['nom'],
-            'postnom' => $validated['postnom'],
-            'prenom' => $validated['prenom'],
-            'structure' => $validated['structure']??"",
-            'specialite' => $validated['specialite']??"",
-            'adresse' => $validated['adresse']??"",
-            'profession_id' => $validated['profession_id'],
-            'genre' => $validated['genre'],
-            'telephone' => $validated['telephone']??"",
-            'date_naissance' => $validated['date_naissance']??"",
-            'image_profil' => $validated['image_profil']??"",
-            'user_id' => $validated['user_id'],
-            'is_active' => true
+            'matricule'         => $matricule,
+            'nom'               => $validated['nom'],
+            'postnom'           => $validated['postnom'],
+            'prenom'            => $validated['prenom'],
+            'structure'         => $validated['structure']??"",
+            'specialite'        => $validated['specialite']??"",
+            'adresse'           => $validated['adresse']??"",
+            'profession_id'     => $validated['profession_id'],
+            'genre'             => $validated['genre'],
+            'telephone'         => $validated['telephone']??"",
+            'date_naissance'    => $validated['date_naissance']??"",
+            'image_profil'      => $validated['image_profil']??"",
+            'user_id'           => $validated['user_id'],
+            'is_active'         => true
             ]);
             $data['sys'] = $personnel;
             return $data;
