@@ -14,6 +14,7 @@ Route::post('personnel/filter', [PersonnelController::class, 'filter']);
 
 Route::middleware(['auth:sanctum'])->group(function () { 
     Route::resource('personnel', PersonnelController::class)->only(['index', 'store']);
+    Route::get('user/delete', [UserController::class, 'destroy']);
 })->missing(function (Request $request) {
     return response()->json([
         "message" => "url not found ".$request->fullUrl()
